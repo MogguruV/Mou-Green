@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622186997024",
+    "project_id": "mou-green",
+    "storage_bucket": "mou-green.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622186997024:android:e4c330ec91e3beb8b32345",
+        "android_client_info": {
+          "package_name": "com.example.mougreen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9KEX5Egy_ltFIh6qpma5uK41_IcRGKk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

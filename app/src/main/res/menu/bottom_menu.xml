@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/bottom_home"
+        android:icon="@drawable/navigasi_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/bottom_penjadwalan"
+        android:icon="@drawable/navigasi_penjadwalan"
+        android:title="Penjadwalan" />
+
+    <item
+        android:id="@+id/bottom_kritik"
+        android:icon="@drawable/navigasi_kritik"
+        android:title="Kritik dan Saran" />
+
+    <item
+        android:id="@+id/bottom_kontak"
+        android:icon="@drawable/navigasi_kontak"
+        android:title="Informasi Kontak" />
+
+
+</menu>
