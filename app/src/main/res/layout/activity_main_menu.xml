@@ -158,6 +158,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:itemIconSize="25dp"
+        app:itemIconTint="@drawable/item_selector"
+        app:itemTextColor="@drawable/item_selector"
         app:menu="@menu/bottom_menu"
         app:labelVisibilityMode="selected"
         />
