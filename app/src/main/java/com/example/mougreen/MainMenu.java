@@ -28,7 +28,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainMenu extends AppCompatActivity {
 
-    private ImageButton tombolEdukasi, tombolProfil;
+    private ImageButton tombolEdukasi, tombolProfil, tombolSampah, tombolLaporan, tombolVideo1;
     private FirebaseAuth mAuth;
     private TextView sambutan;
     private FirebaseUser user;
@@ -56,7 +56,9 @@ public class MainMenu extends AppCompatActivity {
         userUUID = mAuth.getUid();
         bottomNavigationView = findViewById(R.id.menuBawah);
         bottomNavigationView.setSelectedItemId(R.id.bottom_home);
-
+        tombolSampah = findViewById(R.id.tombolTentangSampah);
+        tombolLaporan = findViewById(R.id.tombolLaporan);
+        tombolVideo1 = findViewById(R.id.toVideo1);
 
         if (user == null){
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -85,7 +87,8 @@ public class MainMenu extends AppCompatActivity {
             public void onClick(View v){
                 Intent i = new Intent( getApplicationContext(), EdukasiMenu.class);
                 startActivity(i);
-            finish();}
+            finish();
+            }
         });
 
         tombolProfil.setOnClickListener(new View.OnClickListener(){
@@ -93,8 +96,38 @@ public class MainMenu extends AppCompatActivity {
             public void onClick(View v){
                 Intent i = new Intent( getApplicationContext(), ProfilUser.class);
                 startActivity(i);
-                finish();}
+                finish();
+            }
         });
+
+        tombolSampah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), TentangSampah.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        tombolLaporan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FiturLaporan.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        tombolVideo1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), VideoPlayer.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();

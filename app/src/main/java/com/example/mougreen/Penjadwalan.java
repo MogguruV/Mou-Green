@@ -2,6 +2,8 @@ package com.example.mougreen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Penjadwalan extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
+
+    ImageButton tombolKembali;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,16 @@ public class Penjadwalan extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.menuBawahJadwal);
         bottomNavigationView.setSelectedItemId(R.id.bottom_penjadwalan);
+        tombolKembali = findViewById(R.id.jadwalKembali);
+
+        tombolKembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();

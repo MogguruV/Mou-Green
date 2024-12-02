@@ -10,19 +10,18 @@
 
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/sampah_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/sampah_background_putih" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/tombolKembaliSampah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/sampah_panah_kembali"
@@ -40,36 +39,37 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
+        app:layout_constraintStart_toEndOf="@+id/tombolKembaliSampah"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.09"
         app:srcCompat="@drawable/sampah_teks_tentang_sampah" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/tombolSampahOrganik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/sampah_organik"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.164" />
+        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sampah_background"
+        app:layout_constraintVertical_bias="0.159" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/tombolSampahAnorganik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/sampah_anorganik"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="@+id/sampah_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/tombolSampahOrganik"
         app:layout_constraintVertical_bias="0.024" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/tombolSampahB3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/sampah_b3"
@@ -77,6 +77,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton6"
+        app:layout_constraintTop_toBottomOf="@+id/tombolSampahAnorganik"
         app:layout_constraintVertical_bias="0.036" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,9 @@
 package com.example.mougreen;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class TentangSampahOrganik extends AppCompatActivity {
+
+    ImageButton tombolKembali;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,17 @@ public class TentangSampahOrganik extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        tombolKembali = findViewById(R.id.tombolKembaliOrganik);
+
+        tombolKembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TentangSampah.class);
+                startActivity(intent);
+                finish();
+            }
         });
     }
 }
