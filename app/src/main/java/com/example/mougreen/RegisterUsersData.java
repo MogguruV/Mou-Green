@@ -54,9 +54,6 @@ public class RegisterUsersData extends AppCompatActivity {
         emailUser = getIntent().getExtras().getString("email");
 
 
-
-
-
         toLoginWarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
