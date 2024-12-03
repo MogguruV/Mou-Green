@@ -12,9 +12,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class EdukasiMenu extends AppCompatActivity {
 
     ImageButton tombolKembali, tombolEdukasi1, tombolEdukasi2, tombolEdukasi3;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,9 @@ public class EdukasiMenu extends AppCompatActivity {
         tombolEdukasi2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Edukasi 2 Diklik", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), WebContent.class);
+                startActivity(intent);
+                finish();
             }
         });
 
