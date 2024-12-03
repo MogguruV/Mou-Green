@@ -131,8 +131,5 @@ public class FiturKritik extends AppCompatActivity {
             }
             return false;
         });
-
-
-        
     }
 }
