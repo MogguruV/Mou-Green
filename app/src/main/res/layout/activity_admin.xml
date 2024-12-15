@@ -1,109 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin">
+    android:background="@color/white">
 
-
+    <!-- Welcome Image -->
     <ImageView
         android:id="@+id/fotoSambutanAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142"
-        app:srcCompat="@drawable/admin_kotak_sambutan" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/admin_kotak_sambutan" />
 
-    <ImageButton
-        android:id="@+id/tombolCekLaporan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="308dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/admin_tombol_cek_laporan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Welcome Text -->
 
-    <ImageButton
-        android:id="@+id/tombolLogoutAdmin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/admin_tombol_logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tombolEditKonten" />
-
-    <ImageButton
-        android:id="@+id/tombolEditKonten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/admin_tombol_edit_konten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tombolDeleteKonten" />
-
-    <ImageButton
-        android:id="@+id/tombolDeleteKonten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/admin_tombol_delete_konten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tombolInputKonten" />
-
-    <ImageButton
-        android:id="@+id/tombolInputKonten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/admin_tombol_input_konten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tombolCekLaporan" />
+    <!-- Discover Text -->
 
     <TextView
         android:id="@+id/textSambutanAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/fotoSambutanAdmin"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="-113dp"
+        android:layout_marginEnd="75dp"
         android:text="Selamat Datang Admin"
         android:textColor="@color/white"
-        android:textSize="22dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/fotoSambutanAdmin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/fotoSambutanAdmin"
-        app:layout_constraintTop_toTopOf="@+id/fotoSambutanAdmin"
-        app:layout_constraintVertical_bias="0.508" />
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/textDiscoveryAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/fotoSambutanAdmin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81"
-        app:srcCompat="@drawable/admin_teks_discover" />
+        android:layout_above="@id/fotoSambutanAdmin"
+        android:src="@drawable/admin_teks_discover" />
 
+    <!-- Profile Picture -->
     <ImageButton
         android:id="@+id/fotoProfilAdmin"
-        android:background="@drawable/admin_foto_profil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-       />
+        android:background="@drawable/admin_foto_profil" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Buttons -->
+
+
+    <ImageButton
+        android:id="@+id/tombolCekLaporan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="308dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/admin_tombol_cek_laporan" />
+
+    <ImageButton
+        android:id="@+id/tombolInputKonten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tombolCekLaporan"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/admin_tombol_input_konten" />
+
+    <ImageButton
+        android:id="@+id/tombolDeleteKonten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tombolInputKonten"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/admin_tombol_delete_konten" />
+
+    <ImageButton
+        android:id="@+id/tombolEditKonten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tombolDeleteKonten"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/admin_tombol_edit_konten" />
+
+    <ImageButton
+        android:id="@+id/tombolLogoutAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tombolEditKonten"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/admin_tombol_logout" />
+
+</RelativeLayout>

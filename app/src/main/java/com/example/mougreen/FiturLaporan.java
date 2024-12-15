@@ -11,9 +11,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 public class FiturLaporan extends AppCompatActivity {
 
-    ImageButton tombolKembali;
+    private ImageButton tombolKembali, tombolKirim, tombolUploadImage;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private StorageReference storageRef;
+    private FirebaseStorage storage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,11 @@ public class FiturLaporan extends AppCompatActivity {
         });
 
         tombolKembali = findViewById(R.id.tombolKembaliLaporan);
+        tombolKirim = findViewById(R.id.tombolKirimLaporan);
+        tombolUploadImage = findViewById(R.id.tombolKirimFileLaporan);
+        db = FirebaseFirestore.getInstance();
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
 
         tombolKembali.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,5 +51,10 @@ public class FiturLaporan extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
+
+
     }
 }
