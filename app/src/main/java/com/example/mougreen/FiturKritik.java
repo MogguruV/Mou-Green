@@ -81,10 +81,10 @@ public class FiturKritik extends AppCompatActivity {
                 }
 
                 Map<String, Object> pesanKritik = new HashMap<>();
-                pesanKritik.put("Nama" , nama);
-                pesanKritik.put("Email" , email);
-                pesanKritik.put("No Telepon", noTelp);
-                pesanKritik.put("Kritik", kritik);
+                pesanKritik.put("namaUser" , nama);
+                pesanKritik.put("emailUser" , email);
+                pesanKritik.put("no_telepon", noTelp);
+                pesanKritik.put("kritikUser", kritik);
 
                 db.collection("kritik")
                         .add(pesanKritik)

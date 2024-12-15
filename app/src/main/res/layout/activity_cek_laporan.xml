@@ -34,7 +34,7 @@
         android:background="@drawable/cek1_kotak_kritik_dan_saran" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/kritikKembali"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -42,4 +42,12 @@
         android:layout_marginTop="76dp"
         android:background="@drawable/cek1_tombol_kembali"
         android:src="@drawable/cek1_tombol_kembali" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvKritik"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="180dp"/>
 </RelativeLayout>
