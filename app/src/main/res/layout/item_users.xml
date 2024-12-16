@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="#4CAF50"
+    android:radius="12dp"
+    android:elevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/main_background">
+
+        <!-- Gambar Profil -->
+        <ImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/profil_foto_profil"
+            android:scaleType="centerCrop"
+            android:contentDescription="Gambar Profil"
+            />
+
+        <!-- Nama Pengguna -->
+        <TextView
+            android:id="@+id/textUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imageProfile"
+            android:layout_marginStart="12dp"
+            android:text="M. Aqza Nugraha"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Username -->
+
+        <!-- Email -->
+
+        <TextView
+            android:id="@+id/textUsernameHandle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textUserName"
+            android:layout_marginStart="156dp"
+            android:layout_marginTop="-19dp"
+            android:layout_toEndOf="@id/imageProfile"
+            android:text="MogguruV"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textUsernameHandle"
+            android:layout_toEndOf="@id/imageProfile"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:text="E-mail: aqzanugraha123@gmail.com"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <!-- No Rumah -->
+        <TextView
+            android:id="@+id/textHouseNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textEmail"
+            android:layout_toEndOf="@id/imageProfile"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:text="No rumah: 69"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

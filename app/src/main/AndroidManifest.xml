@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MouGreen"
         tools:targetApi="31">
         <activity
+            android:name=".UserAccounts"
+            android:exported="false" />
+        <activity
             android:name=".WebContent"
             android:exported="false" />
         <activity

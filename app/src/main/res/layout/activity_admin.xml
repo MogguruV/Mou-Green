@@ -81,7 +81,7 @@
         android:background="@drawable/admin_tombol_cek_kritik" />
 
     <ImageButton
-        android:id="@+id/tombolDeleteKonten"
+        android:id="@+id/tombolUserAccounts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tombolCekKritik"
@@ -89,13 +89,13 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
-        android:background="@drawable/admin_tombol_delete_konten" />
+        android:background="@drawable/admin_tombol_user_accounts" />
 
     <ImageButton
         android:id="@+id/tombolEditKonten"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tombolDeleteKonten"
+        android:layout_below="@id/tombolUserAccounts"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="21dp"
