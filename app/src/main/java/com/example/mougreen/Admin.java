@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Admin extends AppCompatActivity {
 
-    private ImageButton tombolLogout, tombolCekKritik;
+    private ImageButton tombolLogout, tombolCekKritik, tombolCekLaporan;
     private FirebaseAuth mAuth;
 
     @Override
@@ -32,7 +32,8 @@ public class Admin extends AppCompatActivity {
         });
 
         tombolLogout = findViewById(R.id.tombolLogoutAdmin);
-        tombolCekKritik = findViewById(R.id.tombolCekLaporan);
+        tombolCekKritik = findViewById(R.id.tombolCekKritik);
+        tombolCekLaporan = findViewById(R.id.tombolCekLaporan);
         mAuth = FirebaseAuth.getInstance();
 
         tombolLogout.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +50,15 @@ public class Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Cek_Laporan.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        tombolCekLaporan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Cek_Laporan2.class);
                 startActivity(intent);
                 finish();
             }

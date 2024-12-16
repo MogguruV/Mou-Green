@@ -70,7 +70,7 @@
         android:background="@drawable/admin_tombol_cek_laporan" />
 
     <ImageButton
-        android:id="@+id/tombolInputKonten"
+        android:id="@+id/tombolCekKritik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tombolCekLaporan"
@@ -78,13 +78,13 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
-        android:background="@drawable/admin_tombol_input_konten" />
+        android:background="@drawable/admin_tombol_cek_kritik" />
 
     <ImageButton
         android:id="@+id/tombolDeleteKonten"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tombolInputKonten"
+        android:layout_below="@id/tombolCekKritik"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
