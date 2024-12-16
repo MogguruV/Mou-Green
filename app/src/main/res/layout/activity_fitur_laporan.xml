@@ -71,13 +71,13 @@
 
     <!-- Email Text -->
     <TextView
-        android:id="@+id/textEmailLaporan"
+        android:id="@+id/textKomentarLaporan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/inputTextNamaLaporan"
         android:layout_marginTop="12dp"
         android:layout_marginStart="16dp"
-        android:text="Alamat E-Email"
+        android:text="Tambahkan Komentar"
         android:textStyle="bold" />
 
     <!-- Comment Input -->
@@ -85,7 +85,7 @@
         android:id="@+id/inputTextKomentarLaporan"
         android:layout_width="match_parent"
         android:layout_height="132dp"
-        android:layout_below="@id/textEmailLaporan"
+        android:layout_below="@id/textKomentarLaporan"
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
