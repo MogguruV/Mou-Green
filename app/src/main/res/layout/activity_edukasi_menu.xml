@@ -22,18 +22,6 @@
         app:layout_constraintVertical_bias="0.148" />
 
     <ImageButton
-        android:id="@+id/edukasiKonten3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edukasi_berita_3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.973" />
-
-    <ImageButton
         android:id="@+id/edukasiKonten2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

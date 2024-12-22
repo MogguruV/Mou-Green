@@ -16,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class EdukasiMenu extends AppCompatActivity {
 
-    ImageButton tombolKembali, tombolEdukasi1, tombolEdukasi2, tombolEdukasi3;
+    ImageButton tombolKembali, tombolEdukasi1, tombolEdukasi2;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -33,7 +33,7 @@ public class EdukasiMenu extends AppCompatActivity {
         tombolKembali = findViewById(R.id.edukasiToMenu);
         tombolEdukasi1 = findViewById(R.id.edukasiKonten1);
         tombolEdukasi2 = findViewById(R.id.edukasiKonten2);
-        tombolEdukasi3 = findViewById(R.id.edukasiKonten3);
+
 
         tombolKembali.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,13 +59,6 @@ public class EdukasiMenu extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), WebContent.class);
                 startActivity(intent);
                 finish();
-            }
-        });
-
-        tombolEdukasi3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Edukasi 3 Diklik", Toast.LENGTH_SHORT).show();
             }
         });
     }

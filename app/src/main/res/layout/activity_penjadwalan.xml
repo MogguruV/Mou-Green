@@ -8,7 +8,6 @@
     android:background="@color/white"
     tools:context=".Penjadwalan">
 
-
     <ImageButton
         android:id="@+id/jadwalKembali"
         android:layout_width="wrap_content"
