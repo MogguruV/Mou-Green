@@ -6,13 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,66 +23,50 @@ import java.util.ArrayList;
 
 public class UserAccounts extends AppCompatActivity {
 
-    ImageButton kembali;
-    RecyclerView recyclerView;
-    ArrayList<Users> usersArrayList;
-    AdapterUsersAccount adapterUsers;
-    FirebaseFirestore db;
-    ProgressDialog progressDialog;
+    private ImageButton kembali;
+    private RecyclerView recyclerView;
+    private ArrayList<Users> usersArrayList;
+    private AdapterUsersAccount adapterUsers;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_user_accounts);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-        // Menampilkan Progress Dialog saat mengambil data
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Sedang memuat users...");
-        progressDialog.show();
 
         // Inisialisasi komponen UI
         kembali = findViewById(R.id.userAccountKembali);
         recyclerView = findViewById(R.id.rvUsers);
+
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Inisialisasi Firestore dan adapter
         db = FirebaseFirestore.getInstance();
         usersArrayList = new ArrayList<>();
-        adapterUsers = new AdapterUsersAccount(this, usersArrayList); // Context lebih aman
-
+        adapterUsers = new AdapterUsersAccount(this, usersArrayList);
         recyclerView.setAdapter(adapterUsers);
 
         // Ambil data users dari Firestore
         AmbilUsers();
 
         // Tombol kembali ke halaman sebelumnya
-        kembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Admin.class);
-                startActivity(intent);
-                finish();
-            }
+        kembali.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Admin.class);
+            startActivity(intent);
+            finish();
         });
     }
 
     private void AmbilUsers() {
-        // Ambil data laporan dari koleksi Firestore dan urutkan berdasarkan 'nama'
-        db.collection("users").orderBy("nama")
+        // Tampilkan ProgressBar
+        db.collection("users").orderBy("namaUsers")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         if (error != null) {
-                            if (progressDialog.isShowing())
-                                progressDialog.dismiss();
-                            Log.e("Firestore Error", error.getMessage());
+                            Log.e("Firestore Error", error.getMessage() != null ? error.getMessage() : "Unknown error");
                             return;
                         }
 
@@ -98,10 +79,6 @@ public class UserAccounts extends AppCompatActivity {
                             }
                             adapterUsers.notifyDataSetChanged(); // Update RecyclerView
                         }
-
-                        // Hentikan progress dialog jika data selesai dimuat
-                        if (progressDialog.isShowing())
-                            progressDialog.dismiss();
                     }
                 });
     }

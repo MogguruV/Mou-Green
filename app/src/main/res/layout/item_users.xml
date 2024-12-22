@@ -62,7 +62,7 @@
             android:layout_toEndOf="@id/imageProfile"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
-            android:text="E-mail: aqzanugraha123@gmail.com"
+            android:text="E-mail: "
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
