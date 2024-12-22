@@ -92,10 +92,10 @@ public class RegisterUsersData extends AppCompatActivity {
 
                 // Create a new user with a first and last name
                 Map<String, Object> user = new HashMap<>();
-                user.put("Email" , email);
-                user.put("Username" , username);
-                user.put("Nama", nama);
-                user.put("Nomor Rumah", noRumah);
+                user.put("emailUsers" , email);
+                user.put("usernameUsers" , username);
+                user.put("namaUsers", nama);
+                user.put("nomorRumahUsers", noRumah);
 
                 db.collection("users").document(currentUserUUID)
                         .set(user)
@@ -115,8 +115,6 @@ public class RegisterUsersData extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
-
-
             }
         });
 
