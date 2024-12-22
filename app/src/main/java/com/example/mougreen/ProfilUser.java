@@ -68,7 +68,7 @@ public class ProfilUser extends AppCompatActivity {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
-                                    usernameText.setText(document.getString("Username"));
+                                    usernameText.setText(document.getString("usernameUsers"));
                             } else {
                                 usernameText.setText("Pak Vincent");
                             }

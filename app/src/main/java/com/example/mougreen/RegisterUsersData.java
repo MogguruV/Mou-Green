@@ -71,11 +71,12 @@ public class RegisterUsersData extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username, nama, noRumah, email;
+                String username, nama, noRumah, email, role;
                 username = String.valueOf(usernameInput.getText());
                 nama = String.valueOf(namaInput.getText());
                 noRumah = String.valueOf(noRumahInput.getText());
                 email = emailUser;
+                role = "user";
 
                 if (TextUtils.isEmpty(username)){
                     Toast.makeText(RegisterUsersData.this, "Enter Username", Toast.LENGTH_SHORT).show();
@@ -96,6 +97,7 @@ public class RegisterUsersData extends AppCompatActivity {
                 user.put("usernameUsers" , username);
                 user.put("namaUsers", nama);
                 user.put("nomorRumahUsers", noRumah);
+                user.put("roleUsers", role);
 
                 db.collection("users").document(currentUserUUID)
                         .set(user)

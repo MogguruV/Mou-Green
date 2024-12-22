@@ -73,7 +73,7 @@ public class MainMenu extends AppCompatActivity {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot document = task.getResult();
-                                    sambutan.setText(String.format("Selamat Datang %s", document.getString("Username")));
+                                    sambutan.setText(String.format("Selamat Datang %s", document.getString("usernameUsers")));
 
                             } else {
                                 sambutan.setText(String.format("Selamat Datang %s", user.getEmail()));
