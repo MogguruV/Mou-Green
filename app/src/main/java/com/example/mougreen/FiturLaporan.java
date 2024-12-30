@@ -125,6 +125,8 @@ public class FiturLaporan extends AppCompatActivity {
                                     tombolKirim.setEnabled(false);
                                     imageUri = null;
                                     showMessage("Laporan berhasil dikirim!");
+                                    startActivity(new Intent(getApplicationContext(), MainMenu.class));
+                                    finish();
                                 })
                                 .addOnFailureListener(e -> {
                                     progressDialog.dismiss();
