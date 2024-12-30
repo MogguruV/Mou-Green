@@ -8,61 +8,74 @@
     android:background="@color/white"
     tools:context=".Penjadwalan">
 
-    <ImageButton
-        android:id="@+id/jadwalKembali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="65dp"
-        android:background="@drawable/jadwal_panah_kembali" />
+    <!-- Tambahkan ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/menuBawahJadwal">
 
-    <ImageView
-        android:id="@+id/imageView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/jadwalKembali"
-        android:layout_alignTop="@id/jadwalKembali"
-        android:layout_marginStart="8dp"
-        app:srcCompat="@drawable/jadwal_teks_jadwal_pembuangan_sampah" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:srcCompat="@drawable/jadwal_kotak_map" />
+            <ImageButton
+                android:id="@+id/jadwalKembali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="65dp"
+                android:background="@drawable/jadwal_panah_kembali" />
 
-    <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/imageView19"
-        android:layout_alignBottom="@id/imageView19"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="26dp"
-        android:layout_marginBottom="-26dp"
-        app:srcCompat="@drawable/new_map_jadwal" />
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/jadwalKembali"
+                android:layout_alignTop="@id/jadwalKembali"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/jadwal_teks_jadwal_pembuangan_sampah" />
 
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView19"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        app:srcCompat="@drawable/new_waktu_pembuangan_sampah" />
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                app:srcCompat="@drawable/jadwal_kotak_map" />
 
-    <ImageView
-        android:id="@+id/imageView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView21"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        app:srcCompat="@drawable/new_waktu_pengangkutan_sampah" />
+            <ImageView
+                android:id="@+id/imageView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imageView19"
+                android:layout_alignBottom="@id/imageView19"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="-26dp"
+                app:srcCompat="@drawable/new_map_jadwal" />
 
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView19"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                app:srcCompat="@drawable/new_waktu_pembuangan_sampah" />
+
+            <ImageView
+                android:id="@+id/imageView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView21"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/new_waktu_pengangkutan_sampah" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <!-- BottomNavigationView tetap berada di bawah -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuBawahJadwal"
         android:layout_width="match_parent"
