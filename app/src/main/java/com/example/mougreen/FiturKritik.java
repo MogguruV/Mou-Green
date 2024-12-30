@@ -15,11 +15,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -32,6 +35,32 @@ public class FiturKritik extends AppCompatActivity {
     private EditText inputNamaUser, inputEmailUser, inputNoTelpUser, inputKritikUser;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+
+    private String userUUID;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        masukkanNama();
+    }
+
+    private void masukkanNama() {
+        db.collection("users").document(userUUID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            inputNamaUser.setText(String.format(document.getString("namaUsers")));
+                            inputEmailUser.setText(String.format(document.getString("emailUsers")));
+                        } else {
+                            inputNamaUser.setText("");
+                            inputEmailUser.setText("");
+                        }
+                    }
+                });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +82,7 @@ public class FiturKritik extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         tombolKirimKritik = findViewById(R.id.tombolKirimKritik);
+        userUUID = mAuth.getUid();
 
         tombolKirimKritik.setOnClickListener(new View.OnClickListener() {
             @Override

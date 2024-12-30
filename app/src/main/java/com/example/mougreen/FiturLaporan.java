@@ -15,16 +15,22 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class FiturLaporan extends AppCompatActivity {
+
 
     private ImageButton tombolKembali, tombolKirim, tombolUploadImage;
     private Uri imageUri; // URI gambar yang dipilih
@@ -32,6 +38,31 @@ public class FiturLaporan extends AppCompatActivity {
     private StorageReference storageRef;
     private EditText inputTextLaporan, inputTextNamaLaporan;
     private ProgressDialog progressDialog; // Progress dialog untuk loading
+
+    private String userUUID, nama;
+    private FirebaseAuth mAuth;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        masukkanNama();
+    }
+
+    private void masukkanNama() {
+        db.collection("users").document(userUUID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            inputTextNamaLaporan.setText(String.format(document.getString("namaUsers")));
+                        } else {
+                            inputTextNamaLaporan.setText("");
+                        }
+                    }
+                });
+    }
 
     private final ActivityResultLauncher<Intent> activityResultLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -65,6 +96,9 @@ public class FiturLaporan extends AppCompatActivity {
         tombolUploadImage = findViewById(R.id.tombolKirimFileLaporan);
         inputTextLaporan = findViewById(R.id.inputTextKomentarLaporan);
         inputTextNamaLaporan = findViewById(R.id.inputTextNamaLaporan);
+        mAuth = FirebaseAuth.getInstance();
+        userUUID = mAuth.getUid();
+
 
         // Inisialisasi Firebase
         db = FirebaseFirestore.getInstance();
@@ -80,6 +114,7 @@ public class FiturLaporan extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), MainMenu.class));
             finish();
         });
+
 
         // Tombol untuk memilih gambar dari galeri
         tombolUploadImage.setOnClickListener(v -> {
