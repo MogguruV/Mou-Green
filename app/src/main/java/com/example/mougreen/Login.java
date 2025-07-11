@@ -103,12 +103,17 @@ public class Login extends AppCompatActivity {
                 emailorusername = String.valueOf(emailOrUsernameInput.getText());
                 password = String.valueOf(passwordInput.getText());
 
-                if (TextUtils.isEmpty(emailorusername)){
-                    Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (TextUtils.isEmpty(password)){
-                    Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
+//                if (TextUtils.isEmpty(emailorusername)){
+//                    Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                if (TextUtils.isEmpty(password)){
+//                    Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+
+                if (!LoginValidator.isInputValid(emailorusername, password)) {
+                    Toast.makeText(Login.this, "Email dan Password tidak boleh kosong", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

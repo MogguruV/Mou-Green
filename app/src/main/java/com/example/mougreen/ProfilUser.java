@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.BuildConfig;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +29,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class ProfilUser extends AppCompatActivity {
 
     private ImageView tombolLogout;
+    private AuthManager authManager;
     private FirebaseUser user;
     private FirebaseAuth mAuth;
     private TextView emailProfile, usernameText;
@@ -53,9 +55,15 @@ public class ProfilUser extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         usernameText = findViewById(R.id.usernameProfil);
         userUUID = mAuth.getUid();
+        authManager = new AuthManager();
 
 
-        if (user == null){
+//        if (user == null){
+//            Intent intent = new Intent(getApplicationContext(), Login.class);
+//            startActivity(intent);
+//            finish();
+//        }
+        if (user == null && !BuildConfig.DEBUG) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
             finish();
@@ -87,12 +95,21 @@ public class ProfilUser extends AppCompatActivity {
         });
 
 
+//        tombolLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(ProfilUser.this, "Log Out Berhasil",
+//                        Toast.LENGTH_SHORT).show();
+//                FirebaseAuth.getInstance().signOut();
+//                Intent intent = new Intent(getApplicationContext(), Login.class);
+//                startActivity(intent);
+//                finish();
+//            }
         tombolLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ProfilUser.this, "Log Out Berhasil",
-                        Toast.LENGTH_SHORT).show();
-                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(ProfilUser.this, "Log Out Berhasil", Toast.LENGTH_SHORT).show();
+                authManager.logout();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 finish();

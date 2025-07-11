@@ -133,47 +133,63 @@ public class FiturLaporan extends AppCompatActivity {
                 return;
             }
 
-            if (imageUri == null) {
-                showMessage("Pilih gambar terlebih dahulu!");
-                return;
-            }
-
             // Tampilkan loading indicator
             progressDialog.show();
 
-            // Mengunggah gambar ke Firebase Storage
-            String fileName = "images/" + System.currentTimeMillis() + ".jpg";
-            StorageReference fileRef = storageRef.child(fileName);
-            fileRef.putFile(imageUri)
-                    .addOnSuccessListener(taskSnapshot -> fileRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                        // URL gambar yang diunggah
-                        String downloadUrl = uri.toString();
+            if (imageUri != null) {
+                // Jika ada gambar, upload dulu
+                String fileName = "images/" + System.currentTimeMillis() + ".jpg";
+                StorageReference fileRef = storageRef.child(fileName);
+                fileRef.putFile(imageUri)
+                        .addOnSuccessListener(taskSnapshot -> fileRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                            String downloadUrl = uri.toString();
+                            simpanLaporan(namaLaporan, isiLaporan, downloadUrl);
+                        }))
+                        .addOnFailureListener(e -> {
+                            progressDialog.dismiss();
+                            Log.e("FiturLaporan", "Gagal mengunggah gambar: ", e);
+                            showMessage("Gagal mengunggah gambar: " + e.getMessage());
+                        });
+            } else {
+                // Jika tidak ada gambar, kirim laporan langsung
+                simpanLaporan(namaLaporan, isiLaporan, "");
+            }
 
-                        // Simpan data laporan ke Firestore
-                        Laporan laporan = new Laporan(namaLaporan, isiLaporan, downloadUrl);
-                        db.collection("laporan")
-                                .add(laporan)
-                                .addOnSuccessListener(documentReference -> {
-                                    progressDialog.dismiss();
-                                    inputTextNamaLaporan.setText("");
-                                    inputTextLaporan.setText("");
-                                    tombolKirim.setEnabled(false);
-                                    imageUri = null;
-                                    showMessage("Laporan berhasil dikirim!");
-                                    startActivity(new Intent(getApplicationContext(), MainMenu.class));
-                                    finish();
-                                })
-                                .addOnFailureListener(e -> {
-                                    progressDialog.dismiss();
-                                    Log.e("FiturLaporan", "Gagal menyimpan laporan: ", e);
-                                    showMessage("Gagal menyimpan laporan: " + e.getMessage());
-                                });
-                    }))
-                    .addOnFailureListener(e -> {
-                        progressDialog.dismiss();
-                        Log.e("FiturLaporan", "Gagal mengunggah gambar: ", e);
-                        showMessage("Gagal mengunggah gambar: " + e.getMessage());
-                    });
+
+
+//            // Mengunggah gambar ke Firebase Storage
+//            String fileName = "images/" + System.currentTimeMillis() + ".jpg";
+//            StorageReference fileRef = storageRef.child(fileName);
+//            fileRef.putFile(imageUri)
+//                    .addOnSuccessListener(taskSnapshot -> fileRef.getDownloadUrl().addOnSuccessListener(uri -> {
+//                        // URL gambar yang diunggah
+//                        String downloadUrl = uri.toString();
+//
+//                        // Simpan data laporan ke Firestore
+//                        Laporan laporan = new Laporan(namaLaporan, isiLaporan, downloadUrl);
+//                        db.collection("laporan")
+//                                .add(laporan)
+//                                .addOnSuccessListener(documentReference -> {
+//                                    progressDialog.dismiss();
+//                                    inputTextNamaLaporan.setText("");
+//                                    inputTextLaporan.setText("");
+//                                    tombolKirim.setEnabled(false);
+//                                    imageUri = null;
+//                                    showMessage("Laporan berhasil dikirim!");
+//                                    startActivity(new Intent(getApplicationContext(), MainMenu.class));
+//                                    finish();
+//                                })
+//                                .addOnFailureListener(e -> {
+//                                    progressDialog.dismiss();
+//                                    Log.e("FiturLaporan", "Gagal menyimpan laporan: ", e);
+//                                    showMessage("Gagal menyimpan laporan: " + e.getMessage());
+//                                });
+//                    }))
+//                    .addOnFailureListener(e -> {
+//                        progressDialog.dismiss();
+//                        Log.e("FiturLaporan", "Gagal mengunggah gambar: ", e);
+//                        showMessage("Gagal mengunggah gambar: " + e.getMessage());
+//                    });
         });
     }
 
@@ -181,4 +197,26 @@ public class FiturLaporan extends AppCompatActivity {
     private void showMessage(String message) {
         Toast.makeText(FiturLaporan.this, message, Toast.LENGTH_SHORT).show();
     }
+
+    private void simpanLaporan(String namaLaporan, String isiLaporan, String downloadUrl) {
+        Laporan laporan = new Laporan(namaLaporan, isiLaporan, downloadUrl);
+        db.collection("laporan")
+                .add(laporan)
+                .addOnSuccessListener(documentReference -> {
+                    progressDialog.dismiss();
+                    inputTextNamaLaporan.setText("");
+                    inputTextLaporan.setText("");
+                    tombolKirim.setEnabled(false);
+                    imageUri = null;
+                    showMessage("Laporan berhasil dikirim!");
+                    startActivity(new Intent(getApplicationContext(), MainMenu.class));
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    progressDialog.dismiss();
+                    Log.e("FiturLaporan", "Gagal menyimpan laporan: ", e);
+                    showMessage("Gagal menyimpan laporan: " + e.getMessage());
+                });
+    }
+
 }
